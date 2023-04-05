@@ -1,7 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Input Suggestion Extension",
+    "name": "TSV Uploader",
     "version": "1.0",
+    "permissions": ["storage"],
     "action": {
       "default_popup": "popup.html",
       "default_icon": {
@@ -12,6 +13,9 @@
     "permissions": [
       "activeTab"
     ],
+    "background": {
+        "service_worker": "background.js"
+      },
     "devtools_page": "devtools.html",
     "content_scripts": [
       {

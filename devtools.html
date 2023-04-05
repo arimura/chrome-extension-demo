@@ -3,23 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV Uploader</title>
+  <title>TSV Uploader</title>
   <link rel="stylesheet" href="devtools.css">
 </head>
 <body>
-  <h1>CSV Uploader</h1>
-  <textarea id="csvInput" placeholder="Enter CSV data here"></textarea>
-  <button id="submitCsv">Submit CSV</button>
+  <h1>TSV Uploader</h1>
+  <textarea id="tsvInput" placeholder="Enter TSV data here"></textarea>
+  <button id="submitTsv">Submit TSV</button>
+  <p id="error" style="color: red; display: none;"></p>
   <script src="devtools.js"></script>
-  <script>
-    document.getElementById("submitCsv").addEventListener("click", () => {
-      const csvData = document.getElementById("csvInput").value;
-      if (csvData) {
-        console.log("CSV Data:", csvData);
-      } else {
-        console.log("No CSV data provided");
-      }
-    });
-  </script>
+  <script src="devtools-panel.js"></script>
 </body>
 </html>
