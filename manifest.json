@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Hoge Display",
+  "version": "1.0",
+  "description": "Display 'hoge' on a specified URL",
+  "permissions": ["activeTab", "tabs", "<all_urls>"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://example.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
