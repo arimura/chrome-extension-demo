@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Uploader</title>
+  <link rel="stylesheet" href="devtools.css">
+</head>
+<body>
+  <h1>CSV Uploader</h1>
+  <input type="file" id="csvFile" accept=".csv">
+  <script src="devtools.js"></script>
+  <script>
+    document.getElementById("csvFile").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const csvData = e.target.result;
+          console.log("CSV Data:", csvData);
+        };
+        reader.readAsText(file);
+      }
+    });
+  </script>
+</body>
+</html>
