@@ -2,7 +2,6 @@
     "manifest_version": 3,
     "name": "TSV Uploader",
     "version": "1.0",
-    "permissions": ["storage"],
     "action": {
       "default_popup": "popup.html",
       "default_icon": {
@@ -11,7 +10,8 @@
       }
     },
     "permissions": [
-      "activeTab"
+      "activeTab",
+      "storage"
     ],
     "background": {
         "service_worker": "background.js"

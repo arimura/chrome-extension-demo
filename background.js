@@ -14,7 +14,9 @@ chrome.runtime.onInstalled.addListener(function() {
   });
  
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    console.log("got data: ", request.tsvData);
     if (request.action === 'saveTsvData') {
+      console.log("hoge");
       chrome.storage.local.set({ tsvData: request.tsvData }, () => {
         sendResponse({ success: true });
       });
