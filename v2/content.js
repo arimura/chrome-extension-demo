@@ -1,12 +1,21 @@
-console.log("start ext");
 
-const localJsonFileUrl = "file:///1Users/k-arimura/ghq/github.com/arimura/chrome-extension-demo/v2/input.json";
+const localJsonFileUrl = "input.json";
 let enabled = false;
 
-async function fetchJson() {
-  const response = await fetch(localJsonFileUrl);
-  return await response.json();
-}
+async function fetchJson(localJsonFileUrl) {
+    let data = {};
+    try {
+      const inputJSONUrl = chrome.runtime.getURL(localJsonFileUrl);
+      const response = await fetch(inputJSONUrl);
+      data = await response.json();
+      console.log("JSON data:", data);
+    } catch (error) {
+      console.error("Error loading JSON data:", error);
+    }
+  
+    return data;
+  }
+  
 
 async function showInputCandidates(selector, candidates) {
   const input = document.querySelector(selector);
@@ -29,7 +38,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 (async () => {
-  const json = await fetchJson();
+  console.log("start ext");
+  const json = await fetchJson(localJsonFileUrl);
   for (const { url, selector, candidates } of json) {
     if (window.location.href === url) {
       showInputCandidates(selector, candidates);
