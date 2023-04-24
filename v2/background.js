@@ -1,5 +1,9 @@
+const enabled = false;
+chrome.storage.sync.set({ enabled });
+
 chrome.action.onClicked.addListener((tab) => {
   chrome.storage.sync.get("enabled", (data) => {
+    console.log(data.enabled);
     const enabled = !data.enabled;
     chrome.storage.sync.set({ enabled });
 
@@ -30,7 +34,7 @@ chrome.tabs.onActivated.addListener(async (activeInfo) => {
     });
   });
 
-  if (tab.url == undefined){
+  if (tab.url == undefined) {
     return;
   }
 
