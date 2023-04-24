@@ -1,3 +1,4 @@
+//TODO: make it local
 const enabled = false;
 chrome.storage.sync.set({ enabled });
 
