@@ -21,31 +21,39 @@ chrome.action.onClicked.addListener((tab) => {
   });
 });
 
-chrome.tabs.onActivated.addListener((activeInfo) => {
-  chrome.tabs.onActivated.addListener((activeInfo) => {
-    const { tabId, windowId } = activeInfo;
+chrome.tabs.onActivated.addListener(async (activeInfo) => {
+  const { tabId, windowId } = activeInfo;
 
+  const tab = await new Promise((resolve) => {
     chrome.tabs.get(tabId, (tab) => {
-      if (!tab.url.startsWith('http://') && !tab.url.startsWith('https://')) {
-        console.warn('Content script cannot be executed on this URL:', tab.url);
-        return;
-      }
-
-      chrome.storage.sync.get("enabled", (data) => {
-        const enabled = data.enabled;
-        chrome.scripting.executeScript({
-          target: { tabId: tab.id },
-          function: sendMessageToContentScript,
-          args: [{ enabled }]
-        });
-      });
-
-      console.log('Active tab URL:', tab.url);
+      resolve(tab);
     });
   });
+
+  if (tab.url == undefined){
+    return;
+  }
+
+  if (!tab.url.startsWith('http://') && !tab.url.startsWith('https://')) {
+    return;
+  }
+
+  const data = await new Promise((resolve) => {
+    chrome.storage.sync.get("enabled", (data) => {
+      resolve(data);
+    });
+  });
+  const enabled = data.enabled;
+
+  console.log('Active tab URL:', tab.url);
+
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    function: sendMessageToContentScript,
+    args: [{ enabled }]
+  });
+
 });
-
-
 
 // Function to send a message to the content script
 function sendMessageToContentScript({ enabled }) {
