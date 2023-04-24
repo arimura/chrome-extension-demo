@@ -1,0 +1,13 @@
+[
+    {
+      "url": "https://example.com/somepage",
+      "selector": "#input-field",
+      "candidates": ["Option 1", "Option 2", "Option 3"]
+    },
+    {
+      "url": "https://example.com/anotherpage",
+      "selector": ".input-field-class",
+      "candidates": ["Choice A", "Choice B", "Choice C"]
+    }
+  ]
+  

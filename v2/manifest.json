@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "Input Suggestions Extension",
+    "version": "1.0",
+    "description": "An extension to provide input suggestions for specific URLs and selectors.",
+    "permissions": [
+      "activeTab",
+      "tabs",
+      "storage"
+    ],
+    "browser_action": {
+      "default_icon": "icon.png",
+      "default_title": "Toggle Input Suggestions"
+    },
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://*/*", "http://*/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ]
+  }
+  
