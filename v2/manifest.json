@@ -21,6 +21,9 @@
         "js": ["content.js"],
         "run_at": "document_end"
       }
-    ]
+    ],
+    "web_accessible_resources": [
+        "file:///Users/k-arimura/ghq/github.com/arimura/chrome-extension-demo/v2/input.json"
+      ]
   }
   

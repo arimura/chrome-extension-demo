@@ -1,4 +1,6 @@
-const localJsonFileUrl = "URL_TO_YOUR_LOCAL_JSON_FILE";
+console.log("start ext");
+
+const localJsonFileUrl = "file:///1Users/k-arimura/ghq/github.com/arimura/chrome-extension-demo/v2/input.json";
 let enabled = false;
 
 async function fetchJson() {
