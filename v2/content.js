@@ -38,7 +38,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 (async () => {
-  console.log("start ext");
   const json = await fetchJson(localJsonFileUrl);
   for (const { url, selector, candidates } of json) {
     if (window.location.href === url) {

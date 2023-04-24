@@ -4,6 +4,7 @@
     "version": "1.0",
     "description": "An extension to provide input suggestions for specific URLs and selectors.",
     "permissions": [
+      "scripting",
       "activeTab",
       "storage"
     ],

@@ -5,7 +5,7 @@ chrome.action.onClicked.addListener((tab) => {
 
     chrome.action.setIcon({
       path: enabled ? "icon-enabled.png" : "icon.png",
-      tabId: tab.id
+      // tabId: tab.id
     });
 
     // Send a message to the content script using chrome.scripting.executeScript
