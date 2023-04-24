@@ -5,8 +5,12 @@ chrome.action.onClicked.addListener((tab) => {
 
     chrome.action.setIcon({
       path: enabled ? "icon-enabled.png" : "icon.png",
-      // tabId: tab.id
     });
+
+    if (!tab.url.startsWith('http://') && !tab.url.startsWith('https://')) {
+      console.warn('Content script cannot be executed on this URL:', tab.url);
+      return;
+    }
 
     // Send a message to the content script using chrome.scripting.executeScript
     chrome.scripting.executeScript({
