@@ -1,5 +1,3 @@
-
-const localJsonFileUrl = "input.json";
 let enabled = false;
 
 async function fetchJson(localJsonFileUrl) {
@@ -38,7 +36,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 (async () => {
-  const json = await fetchJson(localJsonFileUrl);
+  const json = await fetchJson("data/" + window.location.hostname + ".json");
   for (const { url, selector, candidates } of json) {
     if (window.location.href === url) {
       showInputCandidates(selector, candidates);
