@@ -15,7 +15,7 @@ async function fetchJson(localJsonFileUrl) {
   }
   
 
-async function showInputCandidates(selector, candidates) {
+async function showSuggestions(selector, candidates) {
   const input = document.querySelector(selector);
   if (!input) return;
 
@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   const json = await fetchJson("data/" + window.location.hostname + ".json");
   for (const { url, selector, candidates } of json) {
     if (window.location.href === url) {
-      showInputCandidates(selector, candidates);
+      showSuggestions(selector, candidates);
       break;
     }
   }
